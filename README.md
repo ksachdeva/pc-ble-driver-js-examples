@@ -13,6 +13,10 @@ The virtual peripheral I create has following properties :
 * Service 1111 has a characteristic whose UUID is 2222 and is readable
 * I put 2 random values in 2222
 
+Here is a screenshot of how the virtual peripheral looks for me
+![Virtual Peripheral](/virtual_peripheral.PNG?raw=true "Virtual Peripheral")
+
+
 ## nrf5x_apps
 
 This nodejs application contains various examples that make use of pc-ble-driver-js node module
