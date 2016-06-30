@@ -15,7 +15,17 @@ The virtual peripheral I create has following properties :
 
 ## nrf5x_apps
 
-This nodejs application contains various examples that make use of pc-ble-driver-js node module and interact with samples in bleno_apps
+This nodejs application contains various examples that make use of pc-ble-driver-js node module
+
+### example 1
+
+This example is showing how to
+* Scan for devices
+* Connect to selected device
+* Discover services in the selected device
+* Discover characteristics of the selected service
+* Read the selected characteristic
+
 
 ## Misc notes
 
