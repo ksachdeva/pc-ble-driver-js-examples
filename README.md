@@ -5,7 +5,7 @@ This repository contains examples of how to use pc-ble-driver-js node module fro
 Since you will make either a peripheral or central application (or may be both) you would need the corresponding
 devices.
 
-One easy way to create peripherals is to use LightBlue iOS application and create a virtual peripheral in it.
+One easy way to create peripherals is to use LightBlue Explorer iOS application (https://itunes.apple.com/us/app/lightblue-explorer-bluetooth/id557428110?mt=8) and create a virtual peripheral in it.
 
 The virtual peripheral I create has following properties :
 * LocalName : TestNRF5X
