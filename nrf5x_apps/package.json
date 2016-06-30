@@ -1,0 +1,12 @@
+{
+  "name": "nrf5x_apps",
+  "version": "1.0.0",
+  "description": "Examples showing how to use pc-ble-driver-js module",
+  "main": "index.js",
+  "scripts": {},
+  "author": "Kapil Sachdeva <ksachdeva17@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "pc-ble-driver-js": "git+https://github.com/NordicSemiconductor/pc-ble-driver-js.git"
+  }
+}
