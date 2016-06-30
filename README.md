@@ -39,7 +39,7 @@ This example shows how to
 * Discover characteristics of the selected service
 * Read the selected characteristic
 
-[Read more about it!](example1/README.md)
+[Read more about it!](nrfx_apps/example1/README.md)
 
 ## Misc notes
 
