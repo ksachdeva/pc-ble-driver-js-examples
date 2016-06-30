@@ -21,15 +21,25 @@ Here is a screenshot of how the virtual peripheral looks for me
 
 This nodejs application contains various examples that make use of pc-ble-driver-js node module
 
+## Setup
+
+```
+npm install
+```
+
+Note that because pc-ble-driver-js module is not yet published you will get the master version from
+github and there is a possibility that it may be broken because of ongoing development & enhancements
+
 ### example 1
 
-This example is showing how to
+This example shows how to
 * Scan for devices
 * Connect to selected device
 * Discover services in the selected device
 * Discover characteristics of the selected service
 * Read the selected characteristic
 
+[Read more about it!](example1/README.md)
 
 ## Misc notes
 
