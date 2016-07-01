@@ -1,6 +1,6 @@
 # Examples showing how to use pc-ble-driver-js node module
 
-This repository contains examples of how to use pc-ble-driver-js node module from NordicSemiConductor
+This repository contains examples of how to use [pc-ble-driver-js](https://github.com/NordicSemiconductor/pc-ble-driver-js) node module from NordicSemiConductor
 
 Since you will make either a peripheral or central application (or may be both) you would need the corresponding
 devices.
