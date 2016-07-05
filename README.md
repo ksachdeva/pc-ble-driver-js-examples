@@ -41,6 +41,32 @@ This example shows how to
 
 [Read more about it!](nrf5x_apps/example1)
 
+## nrf5x_apps_typescript
+
+This nodejs application contains various examples written using typescript that make use of pc-ble-driver-js node module
+
+## Setup
+
+```
+npm install
+typings install
+```
+
+Note that because pc-ble-driver-js module is not yet published you will get the master version from
+github and there is a possibility that it may be broken because of ongoing development & enhancements
+
+### example 1
+
+This example shows how to
+* Scan for devices
+* Connect to selected device
+* Discover services in the selected device
+* Discover characteristics of the selected service
+* Read the selected characteristic
+
+[Read more about it!](nrf5x_apps_typescript/example1)
+
+
 ## Misc notes
 
 * My development and test machine is Macbook pro running OS X 10.11.xx (El Capitan)
