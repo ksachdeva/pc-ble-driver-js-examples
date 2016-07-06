@@ -67,6 +67,34 @@ This example shows how to
 [Read more about it!](nrf5x_apps_typescript/example1)
 
 
+## nrf5x_apps_rxjs
+
+This nodejs application contains various examples written using typescript & RxJS that make use of rx-pc-ble-driver-js node module
+
+## Setup
+
+```
+npm install
+typings install
+```
+
+Note that because rx-pc-ble-driver-js module is not yet published you will get the master version from
+github
+
+### example 1
+
+This example shows how to
+* Scan for devices
+* Connect to selected device
+* Discover services in the selected device
+* Discover characteristics of the selected service
+* Read the selected characteristic
+
+The interesting thing with this example is that the code is more maintainable, readable & resilient thanks to
+Reactive Extensions.
+
+[Read more about it!](nrf5x_apps_rxjs/example1)
+
 ## Misc notes
 
 * My development and test machine is Macbook pro running OS X 10.11.xx (El Capitan)
