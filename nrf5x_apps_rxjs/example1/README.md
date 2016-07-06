@@ -39,7 +39,7 @@ function getCharObservable(adapter: Adapter) {
 }
 ```
 
-If you compare this code with the one here [nrf5x_apps](/../../nrf5x_apps/example1/index.js) you will
+If you compare this code with the one here ![nrf5x_apps](/../../nrf5x_apps/example1/index.js) you will
 see that this is more readable and easier to follow.
 
 Since this example runs in endless loop, I noticed that discovery of service was failing when I would stop the
