@@ -1,0 +1,12 @@
+{
+  "name": "nrf5x_apps_rxjs",
+  "version": "1.0.0",
+  "description": "Examples showing how to use rx-pc-ble-driver-js module in typescript",
+  "main": "index.js",
+  "scripts": {},
+  "author": "Kapil Sachdeva <ksachdeva17@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "rx-pc-ble-driver-js": "git+https://github.com/ksachdeva/rx-pc-ble-driver-js.git"
+  }
+}
