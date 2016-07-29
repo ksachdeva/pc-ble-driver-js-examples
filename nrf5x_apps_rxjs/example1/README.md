@@ -13,10 +13,47 @@ Explaining Reactive Extensions & RxJS library is not in scope of this example bu
  motivate you to check out the concept & the library.
 
 ```
+function readCharacteristicsObservable(adapter: Adapter, char: Characteristic, connectedDevice: Device) {
+  let val = null;
+  return bleObs.readCharacteristicObservable(adapter, char)
+    .do((value) => {
+      val = value;
+    })
+    .flatMap(() => bleObs.disconnectDeviceObservable(adapter, connectedDevice))
+    .map(() => {
+      return val;
+    });
+}
+
+function discoverCharsAndReadObservable(adapter: Adapter, service: Service, connectedDevice: Device) {
+  return discoverCharacteristicsObservable(adapter, service)
+    .flatMap((char: Characteristic) => {
+      return Observable.if(() => char !== null,
+        readCharacteristicsObservable(adapter, char, connectedDevice),
+        bleObs.disconnectDeviceObservable(adapter, connectedDevice)
+      );
+    });
+}
+
+function readFromDeviceObservable(adapter: Adapter, device: Device) {
+  let connectedDevice = null;
+  return bleObs.connectDeviceObservable(adapter, device, connectOptions)
+    .flatMap((device: Device) => {
+      connectedDevice = device;
+      return discoverServicesObservable(adapter, connectedDevice);
+    })
+    .flatMap((service: Service) => {
+      return Observable.if(() => service !== null,
+        discoverCharsAndReadObservable(adapter, service, connectedDevice),
+        bleObs.disconnectDeviceObservable(adapter, connectedDevice)
+      );
+    });
+}
+
 function getCharObservable(adapter: Adapter) {
   let selectedDevice = null;
+
   return Observable.of(adapter)
-    .do(() => console.log('starting ..'))
     .flatMap((adapter) => bleObs.startScanDevicesObservable(adapter, scanOptions))
     .filter((device: Device) => device.name === config.peripheralOptions.deviceName)
     .take(1)
@@ -24,31 +61,10 @@ function getCharObservable(adapter: Adapter) {
       selectedDevice = device;
       return bleObs.stopScanDevicesObservable(adapter);
     })
-    .flatMap(() => bleObs.connectDeviceObservable(adapter, selectedDevice, connectOptions))
-    .flatMap((device: Device) => {
-      selectedDevice = device;
-      return bleObs.discoverServicesObservable(adapter, selectedDevice)
-        .timeout(3000, 'Timeout occurred during service discovery ..');
-    })
-    .filter((service: Service) => service.uuid === serviceUUID)
-    .flatMap((service: Service) => bleObs.discoverCharacteristicObservable(adapter, service))
-    .filter((chars: Characteristic) => chars.uuid === charUUID)
-    .flatMap((chars: Characteristic) => bleObs.readCharacteristicObservable(adapter, chars))
-    .do((val) => console.log('Value:', val))
-    .flatMap(() => bleObs.disconnectDeviceObservable(adapter, selectedDevice));
+    .flatMap(() => readFromDeviceObservable(adapter, selectedDevice));
 }
+
 ```
 
 If you compare this code with the one here - [nrf5x_apps](https://github.com/ksachdeva/pc-ble-driver-js-examples/blob/master/nrf5x_apps/example1/index.js) you will
 see that this is more readable and easier to follow.
-
-Since this example runs in endless loop, I noticed that discovery of service was failing when I would stop the
-peripheral and no callback was being fired from pc-ble-driver-js library. This is where the **timeout** operator
-from RxJS comes to rescue
-
-```
-return bleObs.discoverServicesObservable(adapter, selectedDevice)
-  .timeout(3000, 'Timeout occurred during service discovery ..');
-```
-
-Above snippet essentially is equivalent to saying that generate error if discoverServicesObservable does not emit for 3 seconds.
