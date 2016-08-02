@@ -24,13 +24,13 @@ const connectOptions: ConnectionOptions = config.connectionOptions;
 const serviceUUID = config.peripheralOptions.serviceUUID;
 const charUUID = config.peripheralOptions.charUUID;
 
-const adapterFactory$ = bleObs.adapaterFactoryObservable(adapterFactory);
+const adapterFactory$ = bleObs.adapterFactoryObservable(adapterFactory);
 
 const openAdapter$ = adapterFactory$
   .filter((adapterEvent) => adapterEvent.eventType === bleObs.AdapterFactoryEventType.Added)
   .take(1)
   .map(adapterEvent => adapterEvent.adapter)
-  .flatMap(adapter => bleObs.openAdapaterObservable(adapter));
+  .flatMap(adapter => bleObs.openAdapterObservable(adapter));
 
 function discoverServicesObservable(adapter: Adapter, connectedDevice: Device) {
   return bleObs.discoverServicesObservable(adapter, connectedDevice)

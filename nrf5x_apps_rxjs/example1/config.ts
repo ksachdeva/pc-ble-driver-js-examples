@@ -26,7 +26,7 @@ export const connectionOptions: ConnectionOptions = {
   connParams: connectionParameters,
 };
 
-export const adapaterOpenOptions: AdapterOpenOptions = {
+export const adapterOpenOptions: AdapterOpenOptions = {
   baudRate: 115200,
   parity: 'none',
   flowControl: 'none',
